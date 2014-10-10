@@ -120,6 +120,27 @@ public class OWLGraph
 		    n = n_column.next();
 		    n.setProperty("Age", 55);
 		    
+		    
+		    Node newNode = null;
+		    parameters.put("ID", 3);
+		    result = IDEngine.execute( queryString, parameters );
+		    n_column = result.columnAs( "n" );
+		    newNode = n_column.next();
+		    
+		    /*
+		    if(newNode == null)
+		    {
+		    	newNode = G.graphDb.createNode();
+		    	
+		    }*/
+		    
+		    newNode.addLabel(DynamicLabel.label("Person"));
+	    	newNode.setProperty("ID", 3);
+	    	newNode.setProperty("FirstName", "Ashok");
+	    	newNode.setProperty("LastName", "Khemka");
+	    	newNode.setProperty("Age","54");
+		    
+		    
 			tx.success();
 			System.out.println("WoohOO");
 		}
